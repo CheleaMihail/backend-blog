@@ -13,9 +13,7 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(
-    "mongodb+srv://MikeSkin:1jinu2pocika3groapA@cluster0.iggmsqu.mongodb.net/blog?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 
@@ -83,7 +81,7 @@ app.delete("/posts/:id", checkAuth, PostController.remove);
 app.post("/posts/:id", checkAuth, CommentController.create);
 app.get("/comments", CommentController.getAllComments);
 
-app.listen(5000, (err) => {
+app.listen(process.env.PORT || 5000, (err) => {
   if (err) {
     return console.log(err);
   }
