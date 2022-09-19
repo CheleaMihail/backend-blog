@@ -13,7 +13,10 @@ import {
 } from "./controllers/index.js";
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://MikeSkin:1jinu2pocika3groapA@cluster0.iggmsqu.mongodb.net/blog?retryWrites=true&w=majority"
+  )
   .then(() => console.log("DB ok"))
   .catch((err) => console.log("DB error", err));
 
