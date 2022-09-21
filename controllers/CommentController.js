@@ -26,8 +26,6 @@ export const create = async (req, res) => {
 export const getCommentsOfPost = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
-
     const comments = await CommentModel.find({
       post: id,
     })
